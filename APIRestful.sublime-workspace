@@ -1,0 +1,306 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"js",
+				"json_encode"
+			],
+			[
+				"Js",
+				"JSON"
+			],
+			[
+				"re",
+				"resultado"
+			],
+			[
+				"con",
+				"consulta"
+			],
+			[
+				"us",
+				"usuario"
+			],
+			[
+				"envi",
+				"enviarForm"
+			],
+			[
+				"env",
+				"enviarForm"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"al",
+				"alt\tAttr"
+			],
+			[
+				"max-",
+				"max-width\tproperty"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "routes/api.php",
+			"settings":
+			{
+				"buffer_size": 1350,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/APIRestful",
+		"/C/xampp/htdocs/APIRestful/app",
+		"/C/xampp/htdocs/APIRestful/app/Providers",
+		"/C/xampp/htdocs/APIRestful/routes"
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/APIRestful/app/Buyer.php",
+		"/C/xampp/htdocs/APIRestful/app/Seller.php",
+		"/C/xampp/htdocs/APIRestful/routes/web.php",
+		"/C/xampp/htdocs/APIRestful/app/Providers/RouteServiceProvider.php",
+		"/C/xampp/htdocs/APIRestful/routes/api.php",
+		"/C/xampp/htdocs/APIRestful/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php",
+		"/C/xampp/htdocs/APIRestful/app/User.php",
+		"/C/xampp/htdocs/APIRestful/vendor/laravel/framework/src/Illuminate/Notifications/Notifiable.php",
+		"/C/Users/ariel/AppData/Roaming/Sublime Text 3/Packages/User/PHP Companion.sublime-settings",
+		"/C/Users/ariel/AppData/Roaming/Sublime Text 3/Packages/PHP Companion/PHP Companion.sublime-settings",
+		"/C/xampp/htdocs/APIRestful/vendor/laravel/framework/src/Illuminate/Auth/Authenticatable.php",
+		"/C/xampp/htdocs/carrera/views/Encuesta/index.php",
+		"/C/xampp/htdocs/expresionesRegulares/index.html",
+		"/C/Users/ariel/AppData/Local/Temp/Rar$DRa4240.26281/jquery.steps.min.js",
+		"/C/Users/ariel/AppData/Local/Temp/Rar$DRa5460.6904/Online-Exam-System/code-projects.org/project.sql",
+		"/C/xampp/htdocs/historiaClinicaLaravel/free-materialize-material-design-admin-template-master/form-layouts.html",
+		"/C/xampp/htdocs/historiaClinicaLaravel/free-materialize-material-design-admin-template-master/index.html",
+		"/C/xampp/htdocs/sistema/resources/assets/js/app.js",
+		"/C/xampp/htdocs/sistema/resources/assets/js/components/Venta.vue",
+		"/C/xampp/htdocs/sistema/config/app.php",
+		"/C/xampp/htdocs/sistemaCursosLaravelVue/config/database.php",
+		"/C/Users/ariel/AppData/Local/Temp/Rar$DRa2936.32897/learning-final/public/css/app.css",
+		"/C/Users/ariel/AppData/Local/Temp/Rar$DRa4484.40234/learning-final/app/Course.php",
+		"/C/Users/ariel/AppData/Local/Temp/Rar$DRa4848.33524/learning-final/public/css/pricing.css",
+		"/C/Users/ariel/AppData/Local/Temp/Rar$DRa4848.32316/learning-final/public/css/app.css",
+		"/C/Users/ariel/AppData/Local/Temp/Rar$DRa5144.32666/learning-final/resources/views/partials/navigations/logged.blade.php",
+		"/C/Users/ariel/AppData/Local/Temp/Rar$DRa5876.14592/learning-final/resources/views/partials/navigation.blade.php"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "routes/api.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								482,
+								482
+							]
+						],
+						"settings":
+						{
+							"SL.25.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "APIRestful.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control Messages"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 409.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
