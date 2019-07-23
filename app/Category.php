@@ -8,4 +8,9 @@ class Category extends Model
 {
     //
     protected $fillable=['name,description'];
+
+    //una categoria puede pertenecer a muchos productos
+    public function products(){
+    	return $this->belongsToMany(Product::class);
+    }
 }
