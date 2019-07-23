@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Transaction;
+
 //como un comprador es un usuario, extendemos de user
 class Buyer extends User
 {
