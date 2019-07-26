@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use App\User;
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -25,5 +26,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'verified'=>$faker->randomElement([User::USUARIO_VERIFICADO,USER::USUARIO_NO_VERIFICADO]),
         'verification_token'=>$verificado==User::USUARIO_VERIFICADO ?null : User::generarVerificationToken(),
         'admin'=>$faker->randomElement([User::USUARIO_ADMINISTRADOR,USER::USUARIO_REGULAR])
+    ];
+});
+
+$factory->define(Category::class, function (Faker\Generator $faker) {
+    
+
+    return [
+        'name' => $faker->word,
+        //una sola palabra
+       	'description'=>$faker->paragraph(2)
     ];
 });
