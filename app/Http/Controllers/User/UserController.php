@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,17 +16,13 @@ class UserController extends Controller
     public function index()
     {
         //
+        $usuarios=User::all();
+        //es bueno estandarizxar la respuesta, osea que sea una response, json y tener un elemento raiz que ene ste caso generalmente es un data
+        return response()->json(['data'=>$usuarios],200);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -49,16 +46,7 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
