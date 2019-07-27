@@ -1,8 +1,10 @@
 <?php
 
 use App\User;
+use App\Seller;
 use App\Product;
 use App\Category;
+use App\Transaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,5 +55,23 @@ $factory->define(Product::class, function (Faker\Generator $faker) {
        	'image'=>$faker->randomElement(['1.jpg','2.jpg','3.jpg']),
        	//obtendremos un user aleatorio
        	'seller_id'=>User::all()->random()->id
+    ];
+});
+
+$factory->define(Transaction::class, function (Faker\Generator $faker) {
+	//obtenemos una lista de los vendedores y obtenemos uno aleatorio
+	//como no tenemos el modelo seler como tabla, sino que seller hereda de usuario, si un usuario tiene productos significa que es un vendedor
+	//el metodo randim obtiene uno
+	$vendedor=Seller::has('products')->get()->random();
+	//obtenemos un comprador excepto  el vendeor
+	$comprador=User::all()->except($vendedor->id)->random();
+
+    
+
+    return [
+        'name' => $faker->word,
+       	'quantity'=>$faker->numberBetween(1,3),
+       	'buyer_id'=>$comprador->id,
+       	'product_id'=>$vendedor->products->random()->id,
     ];
 });
