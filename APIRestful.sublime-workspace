@@ -68,11 +68,19 @@
 	"buffers":
 	[
 		{
-			"file": "database/migrations/2014_10_12_000000_create_users_table.php",
+			"file": "database/factories/ModelFactory.php",
 			"settings":
 			{
-				"buffer_size": 970,
+				"buffer_size": 1851,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Product.php",
+			"settings":
+			{
+				"buffer_size": 943,
 				"line_ending": "Unix"
 			}
 		}
@@ -120,12 +128,18 @@
 	[
 		"/C/xampp/htdocs/APIRestful",
 		"/C/xampp/htdocs/APIRestful/app",
-		"/C/xampp/htdocs/APIRestful/app/Providers",
 		"/C/xampp/htdocs/APIRestful/database",
-		"/C/xampp/htdocs/APIRestful/database/migrations"
+		"/C/xampp/htdocs/APIRestful/database/factories",
+		"/C/xampp/htdocs/APIRestful/public",
+		"/C/xampp/htdocs/APIRestful/public/img"
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/APIRestful/database/migrations/2019_07_26_043757_category_product_table.php",
+		"/C/xampp/htdocs/APIRestful/database/migrations/2019_07_22_052215_create_products_table.php",
+		"/C/xampp/htdocs/APIRestful/database/migrations/2019_07_22_052246_create_categories_table.php",
+		"/C/xampp/htdocs/APIRestful/database/migrations/2019_07_22_052230_create_transactions_table.php",
+		"/C/xampp/htdocs/APIRestful/database/migrations/2014_10_12_000000_create_users_table.php",
 		"/C/xampp/htdocs/APIRestful/app/Providers/AppServiceProvider.php",
 		"/C/xampp/htdocs/APIRestful/routes/api.php",
 		"/C/xampp/htdocs/APIRestful/app/Category.php",
@@ -196,28 +210,59 @@
 			[
 				{
 					"buffer": 0,
-					"file": "database/migrations/2014_10_12_000000_create_users_table.php",
+					"file": "database/factories/ModelFactory.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 970,
+						"buffer_size": 1851,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								796,
-								796
+								1825,
+								1825
 							]
 						],
 						"settings":
 						{
-							"SL.27.region_keys":
+							"SL.20.region_keys":
 							[
 								"sublime_linter.protected_regions"
 							],
 							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 679.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Product.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 943,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								232,
+								210
+							]
+						],
+						"settings":
+						{
+							"SL.24.region_keys":
+							[
+							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -226,7 +271,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

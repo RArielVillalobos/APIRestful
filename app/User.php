@@ -15,6 +15,9 @@ class User extends Authenticatable
     const USUARIO_ADMINISTRADOR='true';
     const USUARIO_REGULAR='false';
 
+    //como buyer y seller heredan de users, al cambiar esta propiedad en user, tambien la heredaremos en los otros modelos que heredan de user
+    protected $table='users';
+
 
     use Notifiable;
 

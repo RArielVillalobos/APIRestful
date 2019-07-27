@@ -26,7 +26,7 @@ $factory->define(User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
-        'verified'=>$faker->randomElement([User::USUARIO_VERIFICADO,USER::USUARIO_NO_VERIFICADO]),
+        'verified'=>$verificado=$faker->randomElement([User::USUARIO_VERIFICADO,USER::USUARIO_NO_VERIFICADO]),
         'verification_token'=>$verificado==User::USUARIO_VERIFICADO ?null : User::generarVerificationToken(),
         'admin'=>$faker->randomElement([User::USUARIO_ADMINISTRADOR,USER::USUARIO_REGULAR])
     ];
@@ -51,7 +51,7 @@ $factory->define(Product::class, function (Faker\Generator $faker) {
        	'description'=>$faker->paragraph(1),
        	//numero entre 1 y 10
        	'quantity'=>$faker->numberBetween(1,10),
-       	'status'=>$faker->randomElement(Product::PRODUCTO_DISPONIBL,Product::PRODUCTO_NO_DISPONIBLE),
+       	'status'=>$faker->randomElement([Product::PRODUCTO_DISPONIBLE,Product::PRODUCTO_NO_DISPONIBLE]),
        	'image'=>$faker->randomElement(['1.jpg','2.jpg','3.jpg']),
        	//obtendremos un user aleatorio
        	'seller_id'=>User::all()->random()->id
@@ -69,7 +69,6 @@ $factory->define(Transaction::class, function (Faker\Generator $faker) {
     
 
     return [
-        'name' => $faker->word,
        	'quantity'=>$faker->numberBetween(1,3),
        	'buyer_id'=>$comprador->id,
        	'product_id'=>$vendedor->products->random()->id,
