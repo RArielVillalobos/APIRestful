@@ -84,6 +84,55 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user=User::findOrFail($id);
+        //regla validacion
+        $rules=[
+            //como el email es unico , al actualizar el email de usuario daria error, entonces debemos hacer la excepcion del usuario autenticado
+            //validacion del campo email de tabla users exceptuando el usuario actual
+            'email'=>'email|unique:users,email,'.$user->id,
+            'password'=>'min:6|confirmed',
+            //que este entre los valores de usuario administrador(true) y usuario regular(false)
+            'admin'=>'in:'.User::USUARIO_ADMINISTRADOR.','.User::USUARIO_REGULAR
+            
+
+        ];
+        $this->validate($request,$rules);
+        if($request->has('name')){
+            $user->name=$request->name;
+        }
+
+        if($request->has('email') && $user->email!=$request->email){
+            if($user->email!=$request->email){
+                $user->email=$request->email;
+                $user->verified=User::USUARIO_NO_VERIFICADO;
+                $user->verification_token=User::generarVerificationToken();   
+            }
+
+        }
+        if($request->has('password')){
+            $user->password=bcrypt($request->password);
+        }
+
+        if($request->has('admin')){
+            //si el usuario no es verificado
+            if(!$user->esVerificado()){
+                //el codigo 409 significa que hubo un conflicto
+                return response()->json(['error'=>'Unicamente los usuarios verificados pueden cambiar su valor a administrador','code'=>'409'],409);
+
+            }
+            $user->admin=$request->admin;
+
+        }
+        
+        // isdirty verirfica si una propiedad al menos fue cambiada
+        //si el usuario no cambio
+        //422 peticion mal formada
+        if(!$user->isDirty()){
+            return response()->json(['error'=>'Se debe especificar al menos un valor diferente para actualizar','code'=>'422'],422);
+        }
+        $user->save();
+        return response()->json(['data'=>$user],200);
+
     }
 
     /**
