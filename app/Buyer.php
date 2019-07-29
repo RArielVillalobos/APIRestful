@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use App\Transaction;
 
 //como un comprador es un usuario, extendemos de user
