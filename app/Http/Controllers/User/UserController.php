@@ -118,7 +118,7 @@ class UserController extends ApiController
             //si el usuario no es verificado
             if(!$user->esVerificado()){
                 //el codigo 409 significa que hubo un conflicto
-                return response()->json(['error'=>'Unicamente los usuarios verificados pueden cambiar su valor a administrador','code'=>'409'],409);
+                return $this->errorResponse('Unicamente los usuarios verificados pueden cambiar su valor a administrador',409);
 
             }
             $user->admin=$request->admin;
@@ -129,7 +129,7 @@ class UserController extends ApiController
         //si el usuario no cambio
         //422 peticion mal formada
         if(!$user->isDirty()){
-            return response()->json(['error'=>'Se debe especificar al menos un valor diferente para actualizar','code'=>'422'],422);
+            return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar',422);
         }
         $user->save();
         return response()->json(['data'=>$user],200);
