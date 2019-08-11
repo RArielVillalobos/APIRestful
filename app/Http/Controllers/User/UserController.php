@@ -19,7 +19,7 @@ class UserController extends ApiController
         //
         $usuarios=User::all();
         //es bueno estandarizxar la respuesta, osea que sea una response, json y tener un elemento raiz que ene ste caso generalmente es un data
-        return response()->json(['data'=>$usuarios],200);
+        return $this->showAll($usuarios);
 
     }
 
@@ -53,7 +53,7 @@ class UserController extends ApiController
 
         //create hace una asignacion masiva
         $usuario=User::create($campos);
-        return response()->json(['data'=>$usuario],201);
+        return $this->showOne($usuario,201);
 
 
     }
@@ -69,7 +69,7 @@ class UserController extends ApiController
         //
         $usuario=User::findOrFail($id);
 
-        return response()->json(['data'=>$usuario],200);
+        return $this->showOne($usuario);
 
     }
 
