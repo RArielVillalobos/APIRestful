@@ -40,14 +40,35 @@ class User extends Authenticatable
         'password', 'remember_token','verification_token'
     ];
 
+    //definiendo un mutador para el nombre(modificar el valor antes de insertar)
+    //ahora al insertar el nombre ya se insertara en minuscula, no hace falta llamar al metodo
+    public function setNameAttribute($attribute){
+        //guardaremos el nombre en minuscula
+        $this->attributes['name']=strtolower($attribute);
+    }
+    //definiendo un accesor para el nombre
+    //ahora al retornar el nombre ya se mostrara la primera letra en mayuscula, no hace falta llamar al metodo
+    public function getNameAttribute($attribute){
+        // si queremos que cada palabra salga en mayuscula podemos usar ucwords
+        //ej Ariel Villalobos
+        return ucwords($attribute);
+    }
+
+    //definiendo un mutador para el email(modificar el valor antes de insertar)
+    public function setEmailAttribute($attribute){
+        $this->attributes['email']=strtolower($attribute);
+    }
+
+
+
     //retorna true si el usuario esta verificado
     public function esVerificado(){
-        return $this->verified==USUARIO_VERIFICADO;
+        return $this->verified==User::USUARIO_VERIFICADO;
     }
 
     //retorna true si el usuario es admin
     public function esAdministrador(){
-        return $this->admin==USUARIO_VERIFICADO;
+        return $this->admin==User::USUARIO_VERIFICADO;
     }
 
     //es estatico porque no es necesario instanciar la clase para acceder a el
