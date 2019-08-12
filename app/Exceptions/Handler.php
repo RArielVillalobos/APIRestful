@@ -9,7 +9,9 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 
 class Handler extends ExceptionHandler
 {
@@ -68,6 +70,9 @@ class Handler extends ExceptionHandler
         }
         if($exception instanceof NotFoundHttpException){
             return $this->errorResponse('No se encontro la url especificada',404);
+        }
+        if($exception instanceof MethodNotAllowedHttpException){
+            return $this->errorResponse('El metodo especificado en la peticion no es válido',405);
         }
         return parent::render($request, $exception);
     }
