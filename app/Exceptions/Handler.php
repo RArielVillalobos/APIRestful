@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -79,6 +80,17 @@ class Handler extends ExceptionHandler
         //controlaremos cualquier otra excepcion
         if($exception instanceof HttpException){
             return $this->errorResponse($exception->getMessage(),$exception->getCode());
+        }
+        //quer pasaria si se quiere eliminar un registro que tiene relaciones a otra tabla error(1451)
+        //lo bueno que podemos depurar la excepcion y ver mas a fondo dd($exception)
+        if($exception instanceof QueryException){
+            //dd($exception);
+            $codigo=$exception->errorInfo[1];
+            if($codigo==1451){
+                //como es un conflicto, no se puede realizar la eliminacion debido a otros probleas dentro de sistema, el codigo retornado sera 409
+                return $this->errorResponse('No se puede eliminar de forma permanente el recurso,esta relacionado con algun otro',409);
+            }
+
         }
         return parent::render($request, $exception);
     }
