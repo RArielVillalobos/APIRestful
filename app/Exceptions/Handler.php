@@ -92,7 +92,16 @@ class Handler extends ExceptionHandler
             }
 
         }
-        return parent::render($request, $exception);
+        //si  estamos en debug retornamos la respuesta html tipica
+        if(config('app.debug')){
+            return parent::render($request, $exception);
+        }
+        //si estamos en prod solo mostramos mensaje y el codigo
+        return $this->errorResponse('Falla inesperada.Intente luego',500);
+
+
+
+
     }
 
     /**
