@@ -32,11 +32,12 @@ class BuyerController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    //para usar el implicit binding en buye debemos primero definir un scope
+    //si no traera todos los usuarios y no los que sean compradores(tienen que tener transacciones)
+    public function show(Buyer $buyer)
     {
-        //
-        $comprador=Buyer::has('transactions')->findOrFail($id);
-        return $this->showOne($comprador);
+       // $buyer=Buyer::has('transactions')->findOrFail($buyer);
+        return $this->showOne($buyer);
 
     }
 
