@@ -24,9 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('seller_id')->unsigned();
             //el vendedor-seller es un usuario, no tendremos una tabla seller
             $table->foreign('seller_id')->references('id')->on('users');
-
-
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

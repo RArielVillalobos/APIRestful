@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             //maximo mil caracteres
             $table->string('description',1000);
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }
