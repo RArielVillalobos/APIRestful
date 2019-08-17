@@ -33,11 +33,11 @@ class SellerController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Seller $seller)
     {
         //
-        $vendedor=Seller::has('products')->findOrFail($id);
-        return $this->showOne($vendedor);
+        //$vendedor=Seller::has('products')->findOrFail($id);
+        return $this->showOne($seller);
     }
 
 
