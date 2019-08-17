@@ -31,6 +31,16 @@ class CategoryController extends ApiController
     public function store(Request $request)
     {
         //
+        $rules=[
+            'name'=>'required',
+            'description'=>'required'
+
+        ];
+        //si falla se duspara una excepcion
+        $this->validate($request,$rules);
+        $category=Category::create($request->all());
+        return $this->showOne($category,201);
+
     }
 
     /**

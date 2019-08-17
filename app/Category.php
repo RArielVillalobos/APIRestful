@@ -10,9 +10,10 @@ class Category extends Model
 {
     //
     use SoftDeletes;
+
     //indicaremos que uno de los atributos debera ser tratado como fecha
     protected $dates=['deleted_at'];
-    protected $fillable=['name,description'];
+    protected $fillable=['name','description'];
 
     //una categoria puede pertenecer a muchos productos
     public function products(){
