@@ -82,7 +82,7 @@ class CategoryController extends ApiController
         $category->save();
 
         return $this->showOne($category);
-        
+
     }
 
     /**
@@ -94,5 +94,8 @@ class CategoryController extends ApiController
     public function destroy(Category $category)
     {
         //
+        $category->delete();
+        return $this->showOne($category);
+
     }
 }
