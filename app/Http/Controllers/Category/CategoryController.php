@@ -66,7 +66,23 @@ class CategoryController extends ApiController
      */
     public function update(Request $request, Category $category)
     {
-        //
+        //el metodo fill recibe los valores que se van a actualizar
+        //intersect solamente recibe por ej el nombre y descripcion, si se envia otro no sera tomado en cuenta
+        $category->fill($request->intersect([
+            'name',
+            'description'
+        ]));
+
+        //si la categoria cambio algunos de sus valores con respecto a su instancia original
+        //si la instancia no ha cambiado(isClean)
+        if($category->isClean()){
+            return $this->errorResponse('Debe especificar un valor diferente para actualizar',422);
+        }
+        //si la categoria se modifico
+        $category->save();
+
+        return $this->showOne($category);
+        
     }
 
     /**
