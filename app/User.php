@@ -3,6 +3,7 @@
 namespace App;
 
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -19,7 +20,11 @@ class User extends Authenticatable
     protected $table='users';
 
 
-    use Notifiable;
+    use Notifiable,SoftDeletes;
+
+    //indicaremos que uno de los atributos debera ser tratado como fecha
+    protected $dates=['deleted_at'];
+
 
     /**
      * The attributes that are mass assignable.

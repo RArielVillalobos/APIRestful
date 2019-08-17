@@ -4,10 +4,14 @@ namespace App;
 
 use App\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
     //
+    use SoftDeletes;
+    //indicaremos que uno de los atributos debera ser tratado como fecha
+    protected $dates=['deleted_at'];
     protected $fillable=['name,description'];
 
     //una categoria puede pertenecer a muchos productos
