@@ -34,6 +34,7 @@ class TransactionController extends ApiController
     public function show(Transaction $transaction)
     {
         //
+        return $this->showOne($transaction);
     }
 
 
