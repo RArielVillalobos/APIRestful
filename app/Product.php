@@ -34,7 +34,7 @@ class Product extends Model
 
 	//un producto pertenece a un vendedor
     public function seller(){
-    	return $this->belongTo(Seller::class);
+    	return $this->belongsTo(Seller::class);
     }
     //un producto puede pertenecer a muchas transacciones
     public function transactions(){
