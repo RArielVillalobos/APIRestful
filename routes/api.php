@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 //como nosotros no vamos a usar la ruta create(mostrar un formulario)
 //solo habilitaremos la ruta para el index y show en este caso
 Route::resource('buyers','Buyer\BuyerController',['only'=>['index','show']]);
+Route::resource('buyers.transactions','Buyer\BuyerTransactionController',['only'=>'index']);
+
 
 /*CATEGORIES*/
 Route::resource('categories','Category\CategoryController',['except'=>['create','edit']]);
