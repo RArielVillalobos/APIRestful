@@ -17,7 +17,8 @@ class Product extends Model
     const PRODUCTO_DISPONIBLE='disponible';
     const PRODUCTO_NO_DISPONIBLE='no disponible';
 
-
+    //ocultar el atributo pivot(de la relacion n a n con categoria)
+    protected $hidden= ['pivot'];
     protected $fillable=[
     	'name',
     	'description',

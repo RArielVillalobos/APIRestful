@@ -15,6 +15,9 @@ class Category extends Model
     protected $dates=['deleted_at'];
     protected $fillable=['name','description'];
 
+    //ocultar el atributo pivot(de la relacion n a n con producto)
+    protected $hidden= ['pivot'];
+
     //una categoria puede pertenecer a muchos productos
     public function products(){
     	return $this->belongsToMany(Product::class);
