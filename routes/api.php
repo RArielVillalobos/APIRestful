@@ -42,6 +42,8 @@ Route::resource('transactions.sellers','Transaction\TransactionSellerController'
 
 /*Seller*/
 Route::resource('sellers','Seller\SellerController',['only'=>['index','show']]);
+Route::resource('sellers.transactions','Seller\SellerTransactionController',['only'=>'index']);
+
 
 /*Users*/
 /*vamos a permitir todas las operaciones excepto create y edit*/
