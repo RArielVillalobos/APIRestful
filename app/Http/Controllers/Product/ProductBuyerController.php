@@ -14,6 +14,7 @@ class ProductBuyerController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
+    //compradores de un producto en especifico
     public function index(Product $product)
     {
         //
