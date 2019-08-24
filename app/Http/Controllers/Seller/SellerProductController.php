@@ -48,7 +48,7 @@ class SellerProductController extends ApiController
         $data['seller_id']=$seller->id;
         $product=Product::create($data);
         return $this->showOne($product,201);
-        
+
 
 
     }
@@ -62,9 +62,43 @@ class SellerProductController extends ApiController
      * @param  \App\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seller $seller)
+    public function update(Request $request, Seller $seller,Product $product)
     {
         //
+        $rules=[
+            'quantity'=>'integer|min:1',
+            //uno de los valores definidos
+            'status'=>'in:'.Product::PRODUCTO_DISPONIBLE.','. Product::PRODUCTO_NO_DISPONIBLE,
+            'image'=>'image',
+
+        ];
+        $this->validate($request,$rules);
+        //si el id del vendedor que enviamos en la peticion es igual al vendedor del producto
+        if($seller->id !=$product->seller_id){
+            return $this->errorResponse('El vendedor especificado no es el vendedor del producto',422);
+
+        }
+        $product->fill($request->intersect([
+            'name','description','quantity'
+        ]));
+        //se puede cambiar el estado si el producto tiene al menos asociada una categoria
+        if($request->has('status')){
+            $product->status=$request->status;
+            if($product->estaDisponible() && $product->categories()->count()==0){
+                return $this->errorResponse('Un producto activo debe tener al menos una categoria',409);
+
+            }
+        }
+        //si no se modificio la instancia
+        if($product->isClean()){
+            return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar',422);
+        }
+
+        $product->save();
+
+        return $this->showOne($product);
+
+
     }
 
     /**
