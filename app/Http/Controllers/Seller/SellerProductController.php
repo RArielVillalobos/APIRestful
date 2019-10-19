@@ -45,7 +45,12 @@ class SellerProductController extends ApiController
         $this->validate($request,$rules);
         $data=$request->all();
         $data['status']=Product::PRODUCTO_NO_DISPONIBLE;
-        $data['image']='1.jpg';
+        //laravel sabra automaticamente que es un archivo
+        //al ser un archivo podemos usar store
+        //primer parametro donde la ubicacion deonde se guardara, y el segundo parametro opcional es el sistema d archivos a usar
+        //como tenemos predefinido por defecto el sistema d archivos que creamos "image" no hace falta ponerlo
+        //tampcoo es necesario poner la ubcacion donde se guardara porque ya esta definiddo en el sistema d archivos, asi que lo dejaremos vacio
+        $data['image']=$request->image->store('');
         $data['seller_id']=$seller->id;
         $product=Product::create($data);
         return $this->showOne($product,201);
