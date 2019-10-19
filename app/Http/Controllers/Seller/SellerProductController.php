@@ -8,6 +8,7 @@ use App\Seller;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SellerProductController extends ApiController
@@ -114,6 +115,9 @@ class SellerProductController extends ApiController
     {
         //
         $this->verificarVendedor($seller,$product);
+        //para eliminar la imagen del producto vamos a usar el facade storage
+        //como ya esta por defecto el sistema d archivos images no hace falta ponerlo
+        Storage::delete($product->image);
         $product->delete();
 
         return $this->showOne($product);
