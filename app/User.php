@@ -42,7 +42,9 @@ class User extends Authenticatable
      */
     /* oculta estos atributos cuando se convierte en un array de datos qque luego se luego lo convierte en json*/
     protected $hidden = [
-        'password', 'remember_token','verification_token'
+        'password',
+        'remember_token',
+        'verification_token'
     ];
 
     //definiendo un mutador para el nombre(modificar el valor antes de insertar)
