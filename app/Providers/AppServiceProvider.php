@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Mail\UserCreated;
+use App\Mail\UserMailChanged;
 use App\Product;
 use App\User;
 use Illuminate\Support\Facades\Mail;
@@ -31,6 +32,15 @@ class AppServiceProvider extends ServiceProvider
         User::created(function($user){
             //el metodo send recibe como parametro el mailable a enviar , el mismo recibe como parametro el usuario al cual se le envia el email(lo definimos en el constructor)
            Mail::to($user->email)->send(new UserCreated($user));
+        });
+        //solo necesitamos que se envie el email de actualizacion de email, solo si SE ACTUALLZO EL EMAIL, SI NO NO TIENE SENTIDO ENVIARLO
+        User::updated(function($user){
+            //si el email fue modificado
+            //devuelve true isDirty
+            if($user->isDirty('email')){
+                Mail::to($user->email)->send(new UserMailChanged($user));
+            }
+
         });
     }
 
