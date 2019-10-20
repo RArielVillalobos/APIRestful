@@ -41,7 +41,7 @@ class Kernel extends HttpKernel
         'api' => [
             //para pasar parametro se usa : y el valor del parametro a utilizar
             'signature:X-Application-Name',
-            'throttle:60,1',
+            'throttle:10,1',
             'bindings',
         ],
     ];
