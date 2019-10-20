@@ -56,4 +56,4 @@ Route::resource('sellers.products','Seller\SellerProductController',['except'=>'
 /*vamos a permitir todas las operaciones excepto create y edit*/
 Route::resource('users','User\UserController',['except'=>['create','edit']]);
 Route::get('users/verify/{token}','User\UserController@verify')->name('users.verify');
-
+Route::get('users/{user}/resend','User\UserController@resend')->name('users.resend');
