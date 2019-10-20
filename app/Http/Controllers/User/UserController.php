@@ -168,7 +168,9 @@ class UserController extends ApiController
         if($user->esVerificado()){
             return $this->errorResponse('Este usuario ya ha sido verificado',409);
         }
-        Mail::to($user)->send(new UserCreated($user));
+       retry(5,function() use($user){
+           Mail::to($user)->send(new UserCreated($user));
+       },100);
         return $this->showMessage('El correo de verificacion se ha reenviado');
     }
 }
