@@ -27,6 +27,12 @@ class DatabaseSeeder extends Seeder
         Transaction::truncate();
         //tabla pivote
         DB::table('category_product')->truncate();
+        //para evitar que se envie un email por cada usuario creado vamos a deshabilitar los eventos en los seed
+        User:flushEventListeners();
+        Category:flushEventListeners();
+        Product:flushEventListeners();
+        Transaction:flushEventListeners();
+
 
         $cantidadUsuarios=1000;
         $cantidadCategorias=30;
