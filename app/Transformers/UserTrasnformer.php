@@ -27,7 +27,7 @@ class UserTrasnformer extends TransformerAbstract
             'fechaCreacion'=>(string)$user->created_at,
             'fechaActualizacion'=>(string)$user->updated_at,
             'fechaEliminaxion'=>isset($user->updated_at) ? (string) $user->deleted_at : null
-            
+
 
         ];
     }
