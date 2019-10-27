@@ -4,6 +4,7 @@ namespace App;
 
 use App\Buyer;
 use App\Product;
+use App\Transformers\TransactionTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,6 +19,8 @@ class Transaction extends Model
     	'buyer_id',
     	'product_id'
     ];
+    //por medio de ::class accedemos al nombre completo de la clase junto con el nombre de espacio
+    public $transformer=TransactionTransformer::class;
 
     //una transaccion pertenece a un producto
     public function product(){

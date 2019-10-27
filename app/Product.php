@@ -5,17 +5,21 @@ namespace App;
 use App\Seller;
 use App\Category;
 use App\Transaction;
+use App\Transformers\ProductTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
+
     //
     use SoftDeletes;
     //indicaremos que uno de los atributos debera ser tratado como fecha
     protected $dates=['deleted_at'];
     const PRODUCTO_DISPONIBLE='disponible';
     const PRODUCTO_NO_DISPONIBLE='no disponible';
+    //por medio de ::class accedemos al nombre completo de la clase junto con el nombre de espacio
+    public $transformer=ProductTransformer::class;
 
     //ocultar el atributo pivot(de la relacion n a n con categoria)
     protected $hidden= ['pivot'];

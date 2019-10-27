@@ -3,6 +3,7 @@
 namespace App;
 
 
+use App\Transformers\UserTrasnformer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,6 +16,10 @@ class User extends Authenticatable
 
     const USUARIO_ADMINISTRADOR='true';
     const USUARIO_REGULAR='false';
+
+    //por medio de ::class accedemos al nombre completo de la clase junto con el nombre de espacio
+    public $transformer=UserTrasnformer::class;
+
 
     //como buyer y seller heredan de users, al cambiar esta propiedad en user, tambien la heredaremos en los otros modelos que heredan de user
     protected $table='users';
