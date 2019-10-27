@@ -25,7 +25,7 @@ class ProductTransformer extends TransformerAbstract
             'vendedor'=>(int)$product->seller_id,
             'fechaCreacion'=>(string)$product->created_at,
             'fechaActualizacion'=>(string)$product->updated_at,
-            'fechaEliminaxion'=>isset($product->updated_at) ? (string) $product->deleted_at : null
+            'fechaEliminacion'=>isset($product->delated_at) ? (string) $product->deleted_at : null
 
 
         ];

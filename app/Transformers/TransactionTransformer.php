@@ -23,7 +23,7 @@ class TransactionTransformer extends TransformerAbstract
             'producto'=>(int) $transaction->buyer_id,
             'fechaCreacion'=>(string)$transaction->created_at,
             'fechaActualizacion'=>(string)$transaction->updated_at,
-            'fechaEliminaxion'=>isset($transaction->updated_at) ? (string) $transaction->deleted_at : null
+            'fechaEliminacion'=>isset($transaction->delated_at) ? (string) $transaction->deleted_at : null
 
 
         ];

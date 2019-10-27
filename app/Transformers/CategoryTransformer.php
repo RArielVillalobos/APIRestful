@@ -21,7 +21,7 @@ class CategoryTransformer extends TransformerAbstract
             'detalles'=> (int) $category->description,
             'fechaCreacion'=>(string)$category->created_at,
             'fechaActualizacion'=>(string)$category->updated_at,
-            'fechaEliminaxion'=>isset($category->updated_at) ? (string) $category->deleted_at : null
+            'fechaEliminacion'=>isset($category->delated_at) ? (string) $category->deleted_at : null
 
 
         ];

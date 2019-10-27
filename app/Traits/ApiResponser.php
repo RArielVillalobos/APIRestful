@@ -25,15 +25,35 @@ trait ApiResponser{
 
     //mostrar una respuesta con multiples elementos(una coleccion) por ej lista de usuarios
     protected function showAll(Collection $collection,$code=200){
-        return $this->successResponse(['data'=>$collection],$code);
+        if($collection->isEmpty()){
+            return $this->successResponse(['data'=>$collection],$code);
+        }
+        $transformer=$collection->first()->transformer;
+        $collection= $this->transformData($collection,$transformer);
+
+        return $this->successResponse($collection,$code);
 
     }
     protected function showOne(Model $instance,$code=200){
-        return $this->successResponse(['data'=>$instance],$code);
+        $transformer=$instance->transformer;
+        $instance=$this->transformData($instance,$transformer);
+        return $this->successResponse($instance,$code);
 
     }
     protected function showMessage($message,$code=200){
         return $this->successResponse(['data'=>$message],$code);
+
+    }
+
+    protected function transformData($data,$transformer){
+        //recibe los datos y como segundo parametro y la instancia del transformador
+        $transformation=fractal($data,new $transformer);
+        //aca ya tenemos toda la info transformaada
+        //convertir la transformacion(instancia de php fractal) a array
+        return $transformation->toArray();
+
+
+
 
     }
 

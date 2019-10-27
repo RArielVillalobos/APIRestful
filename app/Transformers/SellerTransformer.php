@@ -22,7 +22,7 @@ class SellerTransformer extends TransformerAbstract
             'esVerificado'=> (int) $seller->verified,
             'fechaCreacion'=>(string)$seller->created_at,
             'fechaActualizacion'=>(string)$seller->updated_at,
-            'fechaEliminaxion'=>isset($seller->updated_at) ? (string) $seller->deleted_at : null
+            'fechaEliminaxion'=>isset($seller->delated_at) ? (string) $seller->deleted_at : null
         ];
     }
 }
