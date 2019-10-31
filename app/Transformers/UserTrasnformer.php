@@ -31,4 +31,24 @@ class UserTrasnformer extends TransformerAbstract
 
         ];
     }
+
+    public static function originalAttribute($index){
+        $atributes=[
+            //
+            'identificador'=> 'id',
+            'nombre'=> 'name',
+            'correo'=> 'email',
+            'esVerificado'=> 'verified',
+            'esAdministrador'=> 'admin',
+            'fechaCreacion'=>'created_at',
+            'fechaActualizacion'=>'updated_at',
+            'fechaEliminacion'=>'deleted_at'
+
+
+        ];
+
+        return isset($atributes[$index]) ?$atributes[$index]:null;
+
+
+    }
 }

@@ -30,4 +30,22 @@ class ProductTransformer extends TransformerAbstract
 
         ];
     }
+
+    public static function originalAttribute($index){
+        $atributes=[
+            //
+            'identificador'=> 'id',
+            'titulo'=>'name',
+            'detalles'=> 'description',
+            'disponibles'=> 'quantity',
+            'estado'=>'status',
+            'imagen'=>'image',
+            'vendedor'=>'seller_id',
+            'fechaCreacion'=>'created_at',
+            'fechaActualizacion'=>'updated_at',
+            'fechaEliminacion'=>'deleted_at'
+        ];
+
+        return isset($atributes[$index]) ?$atributes[$index]:null;
+    }
 }
