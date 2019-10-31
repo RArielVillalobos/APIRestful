@@ -7,6 +7,7 @@
  */
 namespace App\Traits;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 trait ApiResponser{
@@ -31,6 +32,7 @@ trait ApiResponser{
         $transformer=$collection->first()->transformer;
         $collection=$this->filterData($collection,$transformer);
         $collection=$this->sortData($collection,$transformer);
+        $collection=$this->paginate($collection);
         $collection= $this->transformData($collection,$transformer);
 
         return $this->successResponse($collection,$code);
@@ -57,6 +59,28 @@ trait ApiResponser{
         return $collection;
 
     }
+    
+    protected function paginate(Collection $collection){
+        //aca conocemos la pagina en cual estamos
+        $pageActual=LengthAwarePaginator::resolveCurrentPage();
+        $perPage=15;
+        //dividir la coleccion dependiendo del tamaño de la pagina
+        //ej si estamos en la 2 debemos mostrar de la 16 a 30
+        $results=$collection->slice(($pageActual-1)*$perPage,$perPage)->values();
+        //crear instancia paginador
+        $paginated=new LengthAwarePaginator($results,$collection->count(),$perPage,$pageActual,[
+            'path'=>LengthAwarePaginator::resolveCurrentPath()
+        ]);
+        //tenemos que tener en cuenta que la generacion de esta ruta, automaticamente elimina los parametros d url q van alli
+        //por ej si enviamos el num d pagina+que queremos ordenar los elementos, lo ultimo se eliminara
+        //para resolver esto debbemos pedirle a los resultados paginados que agregue la lista de todos los parametros q podamos tener
+
+        $paginated->appends(request()->all());
+
+        return $paginated;
+
+
+    }
 
     //por medio del transformer podemos identificar realmente cual es el atributo por el cual se va a hacer el filtrado
     public function filterData(Collection $collection,$transformer){
@@ -72,7 +96,7 @@ trait ApiResponser{
                 }
 
             }
-           
+
          return $collection;
     }
 
@@ -82,10 +106,7 @@ trait ApiResponser{
         //aca ya tenemos toda la info transformaada
         //convertir la transformacion(instancia de php fractal) a array
         return $transformation->toArray();
-
-
-
-
+        
     }
 
 
