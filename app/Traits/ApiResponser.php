@@ -29,6 +29,7 @@ trait ApiResponser{
             return $this->successResponse(['data'=>$collection],$code);
         }
         $transformer=$collection->first()->transformer;
+        $collection=$this->filterData($collection,$transformer);
         $collection=$this->sortData($collection,$transformer);
         $collection= $this->transformData($collection,$transformer);
 
@@ -55,6 +56,24 @@ trait ApiResponser{
         }
         return $collection;
 
+    }
+
+    //por medio del transformer podemos identificar realmente cual es el atributo por el cual se va a hacer el filtrado
+    public function filterData(Collection $collection,$transformer){
+        //obtenemos la lista de todos los parametros
+            foreach(request()->query as $query=>$value){
+                //obtengo el valor original del campo ej esVerificado el original es verified
+                $atributte=$transformer::originalAttribute($query);
+                //si el atributo y valor no son vacio
+                if(isset($atributte,$value)){
+                    $collection=$collection->where($atributte,$value);
+
+
+                }
+
+            }
+           
+         return $collection;
     }
 
     protected function transformData($data,$transformer){
