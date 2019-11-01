@@ -9,6 +9,7 @@ namespace App\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 trait ApiResponser{
@@ -35,6 +36,7 @@ trait ApiResponser{
         $collection=$this->sortData($collection,$transformer);
         $collection=$this->paginate($collection);
         $collection= $this->transformData($collection,$transformer);
+        $collection= $this->cacheResponse($collection);
 
         return $this->successResponse($collection,$code);
 
@@ -117,6 +119,19 @@ trait ApiResponser{
         //convertir la transformacion(instancia de php fractal) a array
         return $transformation->toArray();
         
+    }
+
+    protected function cacheResponse($data){
+        //necesitamos la url actual
+        $url=request()->url();
+        //la url es para identificar de manera unica la peticion con otra
+        //el 2do param es el tiempo, si queremos 30 segundos lo dividimos por 60 que es un minuto
+        return Cache::remember($url,30/60,function() use ($data){
+            return $data;
+
+        });
+
+
     }
 
 
