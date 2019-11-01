@@ -124,9 +124,20 @@ trait ApiResponser{
     protected function cacheResponse($data){
         //necesitamos la url actual
         $url=request()->url();
+        //accedo a todos los parametros de la query
+        $queryParams=request()->query();
+        //ordena un array dependiendo de la clave
+        ksort($queryParams);
+        //construimos el query string
+        $queryString=http_build_query($queryParams);
+        //creamos la url
+        //por ej se generaria algo asi si tenemos los parametros  por_page y el parametro order_by
+        //http://127.0.0.1:8000/users?order_by=name&per_page=50
+        $fullUrl="{$url}?{$queryString}";
+
         //la url es para identificar de manera unica la peticion con otra
         //el 2do param es el tiempo, si queremos 30 segundos lo dividimos por 60 que es un minuto
-        return Cache::remember($url,30/60,function() use ($data){
+        return Cache::remember($fullUrl,30/60,function() use ($data){
             return $data;
 
         });
