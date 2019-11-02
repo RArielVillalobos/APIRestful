@@ -21,7 +21,7 @@ class BuyerProductController extends ApiController
         //como solo  queremos obtener el producto de cada transaccion, lo hacemos con el metodo pluck
 
         $products=$buyer->transactions()->with('product')->get()->pluck('product');
-        dd($products);
+        return $this->showAll($products);
 
     }
 
