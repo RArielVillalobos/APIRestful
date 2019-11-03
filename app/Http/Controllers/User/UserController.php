@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\ApiController;
 use App\Mail\UserCreated;
+use App\Transformers\UserTrasnformer;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,16 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends ApiController
 {
+    public function __construct()
+    {
+        //ejecutamos el metodo constructor del padre
+        //si el constructor del padre realiza alguna tarea, seguira siendo ejecutada esa tarea
+        parent::__construct();
+        //registramos el middleware
+        //recibe como param el nombre del transformador
+        $this->middleware('transform.input:'.UserTrasnformer::class)->only(['store','update']);
+    }
+
     /**
      * Display a listing of the resource.
      *

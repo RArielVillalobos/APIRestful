@@ -11,4 +11,8 @@ class ApiController extends Controller
     use ApiResponser;
     //
 
+    public function __construct()
+    {
+    }
+
 }

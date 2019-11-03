@@ -22,7 +22,22 @@ class SellerTransformer extends TransformerAbstract
             'esVerificado'=> (int) $seller->verified,
             'fechaCreacion'=>(string)$seller->created_at,
             'fechaActualizacion'=>(string)$seller->updated_at,
-            'fechaEliminaxion'=>isset($seller->delated_at) ? (string) $seller->deleted_at : null
+            'fechaEliminaxion'=>isset($seller->delated_at) ? (string) $seller->deleted_at : null,
+            'links'=>[
+                [
+                    'rel'=>'self',
+                    'href'=>route('sellers.show',$seller->id),
+
+                ],
+                [
+                    'rel'=>'buyers.categories',
+                    'href'=>route('buyers.categories.index',$seller->id),
+
+                ],
+
+
+            ]
+
         ];
     }
 

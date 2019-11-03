@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\ApiController;
 use App\Product;
 use App\Transaction;
+use App\Transformers\TransactionTransformer;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,15 @@ use Illuminate\Support\Facades\DB;
 
 class ProductBuyerTransactionController extends ApiController
 {
+    public function __construct()
+    {
+        //ejecutamos el metodo constructor del padre
+        //si el constructor del padre realiza alguna tarea, seguira siendo ejecutada esa tarea
+        parent::__construct();
+        //registramos el middleware
+        //recibe como param el nombre del transformador
+        $this->middleware('transform.input:'.TransactionTransformer::class)->only(['store']);
+    }
 
 
     /**
